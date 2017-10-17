@@ -14,7 +14,8 @@ namespace 가계부
     {
         public LoginForm loginForm;
         public BankSettingForm bankSettingForm;
-        AccountSettingForm accountSettingForm;
+        public AccountSettingForm accountSettingForm;
+        public CategorySettingForm categorySettingForm;
 
         public MainForm()
         {
@@ -70,7 +71,8 @@ namespace 가계부
         //분류 설정
         private void toolStripMenuItem3_Click(object sender, EventArgs e)
         {
-
+            categorySettingForm = new CategorySettingForm(this);
+            categorySettingForm.Show();
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -92,6 +94,8 @@ namespace 가계부
         {
             Global.bankList = new BankList();
             Global.bankList.LoadBankList();
+            Global.categoryList = new BigCategoryList();
+            Global.categoryList.LoadCategoryList();
         }
     }
 }

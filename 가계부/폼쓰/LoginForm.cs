@@ -84,5 +84,12 @@ namespace 가계부
                 checkBox1.Checked = false;
             }
         }
+
+        private void buttonAddAccount_Click(object sender, EventArgs e)
+        {
+            AddAccountForm addForm = new AddAccountForm();
+
+            addForm.ShowDialog();
+        }
     }
 }

@@ -37,6 +37,7 @@
             this.buttonLogIn = new System.Windows.Forms.Button();
             this.buttonClose = new System.Windows.Forms.Button();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.buttonAddAccount = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -90,7 +91,7 @@
             this.buttonLogIn.Font = new System.Drawing.Font("굴림", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.buttonLogIn.Location = new System.Drawing.Point(68, 412);
             this.buttonLogIn.Name = "buttonLogIn";
-            this.buttonLogIn.Size = new System.Drawing.Size(252, 38);
+            this.buttonLogIn.Size = new System.Drawing.Size(168, 38);
             this.buttonLogIn.TabIndex = 5;
             this.buttonLogIn.Text = "로 그 인";
             this.buttonLogIn.UseVisualStyleBackColor = true;
@@ -118,11 +119,23 @@
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
+            // buttonAddAccount
+            // 
+            this.buttonAddAccount.Font = new System.Drawing.Font("굴림", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.buttonAddAccount.Location = new System.Drawing.Point(242, 412);
+            this.buttonAddAccount.Name = "buttonAddAccount";
+            this.buttonAddAccount.Size = new System.Drawing.Size(78, 38);
+            this.buttonAddAccount.TabIndex = 8;
+            this.buttonAddAccount.Text = "등록";
+            this.buttonAddAccount.UseVisualStyleBackColor = true;
+            this.buttonAddAccount.Click += new System.EventHandler(this.buttonAddAccount_Click);
+            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(391, 496);
+            this.ClientSize = new System.Drawing.Size(391, 503);
+            this.Controls.Add(this.buttonAddAccount);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.buttonClose);
             this.Controls.Add(this.buttonLogIn);
@@ -156,5 +169,6 @@
         private System.Windows.Forms.Button buttonLogIn;
         private System.Windows.Forms.Button buttonClose;
         private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Button buttonAddAccount;
     }
 }

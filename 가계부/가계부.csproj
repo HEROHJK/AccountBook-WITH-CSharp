@@ -53,13 +53,28 @@
   <ItemGroup>
     <Compile Include="글로발쓰\Global.cs" />
     <Compile Include="데이터베이쓰\DataManagement.cs" />
-    <Compile Include="클래씨쓰\Bank.cs" />
-    <Compile Include="클래씨쓰\BankList.cs" />
+    <Compile Include="클래씨쓰\은행목록\Bank.cs" />
+    <Compile Include="클래씨쓰\은행목록\BankList.cs" />
+    <Compile Include="클래씨쓰\카테고리 목록\BigCategory.cs" />
+    <Compile Include="클래씨쓰\카테고리 목록\BigCategoryList.cs" />
+    <Compile Include="클래씨쓰\카테고리 목록\SmallCategory.cs" />
+    <Compile Include="폼쓰\AddAccountForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="폼쓰\AddAccountForm.Designer.cs">
+      <DependentUpon>AddAccountForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="폼쓰\BankSettingForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="폼쓰\BankSettingForm.Designer.cs">
       <DependentUpon>BankSettingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="폼쓰\CategorySettingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="폼쓰\CategorySettingForm.Designer.cs">
+      <DependentUpon>CategorySettingForm.cs</DependentUpon>
     </Compile>
     <Compile Include="폼쓰\LoginForm.cs">
       <SubType>Form</SubType>
@@ -93,8 +108,14 @@
     <Compile Include="폼쓰\AccountSettingForm.Designer.cs">
       <DependentUpon>AccountSettingForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="폼쓰\AddAccountForm.resx">
+      <DependentUpon>AddAccountForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="폼쓰\BankSettingForm.resx">
       <DependentUpon>BankSettingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="폼쓰\CategorySettingForm.resx">
+      <DependentUpon>CategorySettingForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="폼쓰\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>

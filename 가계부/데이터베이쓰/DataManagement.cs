@@ -15,7 +15,7 @@ namespace 가계부
         public DataManagement()
         {
         }
-
+        #region 은행추가
         public Bank AddBank(string name)
         {
             Bank newBank;
@@ -42,7 +42,9 @@ namespace 가계부
 
             return newBank;
         }
+        #endregion
 
+        #region 은행이름수정
         public void CorrectBankName(int index, string name)
         {
             using (MySqlConnection mysql = new MySqlConnection(strConn))
@@ -54,9 +56,10 @@ namespace 가계부
 
                 cmd.ExecuteNonQuery();
             }
-
         }
+        #endregion
 
+        #region 은행목록 로드
         public List<Bank> LoadBankList()
         {
             List<Bank> list = new List<Bank>();
@@ -88,7 +91,9 @@ namespace 가계부
             }
                 return list;
         }
+        #endregion
 
+        #region 로그인
         public bool Login(string name, string password)
         {
             using (MySqlConnection mysql = new MySqlConnection(strConn))
@@ -116,5 +121,157 @@ namespace 가계부
                 else return false;
             }
         }
+        #endregion
+
+        #region 계정 등록
+        public int AddAccount(string name, string password)
+        {
+            using (MySqlConnection mysql = new MySqlConnection(strConn))
+            {
+                mysql.Open();
+                string query = string.Format("SELECT count(*) FROM accountBook.`Account` a WHERE a.`name`= '{0}';", name);
+                MySqlCommand cmd = new MySqlCommand(query, mysql);
+
+                int boolean = Convert.ToInt32(cmd.ExecuteScalar());
+
+                if (boolean == 0)
+                {
+                    Global.userName = name;
+                    query = string.Format("INSERT INTO accountBook.`Account` (`name`, `password`) VALUES('{0}','{1}');", name, password);
+                    cmd.CommandText = query;
+                    cmd.ExecuteNonQuery();
+                    return 1;
+                }
+                else return 0;
+            }
+        }
+        #endregion
+
+        #region 소분류 로드
+        public List<SmallCategory> LoadChildList(int parentIndex)
+        {
+            List<SmallCategory> list = new List<SmallCategory>();
+            list.Clear();
+            using (MySqlConnection mysql = new MySqlConnection(strConn))
+            {
+                mysql.Open();
+                SmallCategory smallCategory;
+                string query = string.Format("SELECT `index`,`name` FROM accountBook.`SmallCategory` s WHERE s.`parentIndex` = '{0}';", parentIndex);
+                MySqlCommand cmd = new MySqlCommand(query, mysql);
+                MySqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    smallCategory = new SmallCategory(Convert.ToInt32(reader[0]), parentIndex, reader[1].ToString());
+                    list.Add(smallCategory);
+                }
+            }
+                return list;
+        }
+        #endregion
+
+        #region 대분류 로드
+        public List<BigCategory> LoadCategoryList()
+        {
+            List<BigCategory> list = new List<BigCategory>();
+            list.Clear();
+            using (MySqlConnection mysql = new MySqlConnection(strConn))
+            {
+                mysql.Open();
+                BigCategory bigCategory;
+                string query = string.Format("SELECT `index`,`name` FROM accountBook.`BigCategory` b WHERE b.`accountIndex` = '{0}';", Global.userId);
+                MySqlCommand cmd = new MySqlCommand(query, mysql);
+                MySqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    bigCategory = new BigCategory(Convert.ToInt32(reader[0]), reader[1].ToString(), Global.userId);
+                    list.Add(bigCategory);
+                }
+            }
+            return list;
+        }
+        #endregion
+
+        #region 대분류 등록
+        public bool AddBigCategory(string name)
+        {
+            using (MySqlConnection mysql = new MySqlConnection(strConn))
+            {
+                mysql.Open();
+                string query = string.Format("SELECT count(*) FROM accountBook.`BigCategory` b WHERE b.`name`= '{0}' AND b.`accountIndex` = '{1}';", name, Global.userId);
+                MySqlCommand cmd = new MySqlCommand(query, mysql);
+
+                int boolean = Convert.ToInt32(cmd.ExecuteScalar());
+
+                if (boolean == 0)
+                {
+                    Global.userName = name;
+                    query = string.Format("INSERT INTO accountBook.`BigCategory` (`name`, `accountIndex`) VALUES('{0}','{1}');", name, Global.userId);
+                    cmd.CommandText = query;
+                    cmd.ExecuteNonQuery();
+                    return true;
+                }
+                else return false;
+            }
+        }
+        #endregion
+
+        #region 소분류 등록
+        public bool AddSmallCategory(string name, int parentIndex)
+        {
+            using (MySqlConnection mysql = new MySqlConnection(strConn))
+            {
+                mysql.Open();
+                string query = string.Format("SELECT count(*) FROM accountBook.`SmallCategory` s WHERE s.`name`= '{0}' AND s.`parentIndex` = '{1}';", name, parentIndex);
+                MySqlCommand cmd = new MySqlCommand(query, mysql);
+
+                int boolean = Convert.ToInt32(cmd.ExecuteScalar());
+
+                if (boolean == 0)
+                {
+                    Global.userName = name;
+                    query = string.Format("INSERT INTO accountBook.`SmallCategory` (`name`, `parentIndex`) VALUES('{0}','{1}');", name, parentIndex);
+                    cmd.CommandText = query;
+                    cmd.ExecuteNonQuery();
+                    return true;
+                }
+                else return false;
+            }
+        }
+        #endregion
+
+        #region 대분류 삭제
+        public void DeleteBigCategory(int index)
+        {
+            using (MySqlConnection mysql = new MySqlConnection(strConn))
+            {
+                mysql.Open();
+                string query = string.Format("DELETE FROM accountBook.`SmallCategory` WHERE `parentIndex` = '{0}';", index);
+                MySqlCommand cmd = new MySqlCommand(query, mysql);
+
+                cmd.ExecuteNonQuery();
+
+                query = string.Format("DELETE FROM accountBook.`BigCategory` WHERE `index` = '{0}';", index);
+
+                cmd.CommandText = query;
+
+                cmd.ExecuteNonQuery();
+            }
+        }
+        #endregion
+
+        #region 소분류 삭제
+        public void DeleteSmallCategory(int parentIndex, string name)
+        {
+            using (MySqlConnection mysql = new MySqlConnection(strConn))
+            {
+                mysql.Open();
+                string query = string.Format("DELETE FROM accountBook.`SmallCategory` WHERE `name` = '{0}' AND `parentIndex` = '{1}';", name, parentIndex);
+
+                MySqlCommand cmd = new MySqlCommand(query, mysql);
+
+                cmd.ExecuteNonQuery();
+            }
+        }
+        #endregion
     }
 }

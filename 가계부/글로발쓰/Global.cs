@@ -15,5 +15,6 @@ namespace 가계부
         public static int month = DateTime.Now.Month;
         public static DataManagement dm = new DataManagement();
         public static BankList bankList;
+        public static BigCategoryList categoryList;
     }
 }
