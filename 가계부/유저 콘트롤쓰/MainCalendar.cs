@@ -12,44 +12,40 @@ namespace 가계부
 {
     public partial class MainCalendar : UserControl
     {
-        public int year;
-        public int month;
         public MainCalendar()
         {
             InitializeComponent();
-            year = DateTime.Now.Year;
-            month = DateTime.Now.Month;
 
-            buttonCalendarMonth.Text = string.Format("{0:0000}년 {1:00}월", year, month);
+            buttonCalendarMonth.Text = string.Format("{0:0000}년 {1:00}월", Global.year, Global.month);
         }
 
         private void buttonNextMonth_Click_1(object sender, EventArgs e)
         {
-            if (month >= 12)
+            if (Global.month >= 12)
             {
-                month = 1;
-                year++;
+                Global.month = 1;
+                Global.year++;
             }
             else
             {
-                month++;
+                Global.month++;
             }
-            buttonCalendarMonth.Text = string.Format("{0:0000}년 {1:00}월", year, month);
+            buttonCalendarMonth.Text = string.Format("{0:0000}년 {1:00}월", Global.year, Global.month);
         }
 
         private void buttonPreviousMonth_Click_1(object sender, EventArgs e)
         {
-            if (month <= 1)
+            if (Global.month <= 1)
             {
-                month = 12;
-                year--;
+                Global.month = 12;
+                Global.year--;
             }
             else
             {
-                month--;
+                Global.month--;
             }
 
-            buttonCalendarMonth.Text = string.Format("{0:0000}년 {1:00}월", year, month);
+            buttonCalendarMonth.Text = string.Format("{0:0000}년 {1:00}월", Global.year, Global.month);
         }
 
         private void buttonCalendarMonth_Click_1(object sender, EventArgs e)
@@ -62,7 +58,7 @@ namespace 가계부
 
         public void ChangeDate()
         {
-            buttonCalendarMonth.Text = string.Format("{0:0000}년 {1:00}월", year, month);
+            buttonCalendarMonth.Text = string.Format("{0:0000}년 {1:00}월", Global.year, Global.month);
         }
     }
 }

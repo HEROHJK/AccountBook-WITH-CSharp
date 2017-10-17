@@ -39,7 +39,7 @@
             this.buttonCalendarMonth.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ControlDark;
             this.buttonCalendarMonth.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonCalendarMonth.Font = new System.Drawing.Font("굴림", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.buttonCalendarMonth.Location = new System.Drawing.Point(43, 0);
+            this.buttonCalendarMonth.Location = new System.Drawing.Point(37, 0);
             this.buttonCalendarMonth.Name = "buttonCalendarMonth";
             this.buttonCalendarMonth.Size = new System.Drawing.Size(166, 43);
             this.buttonCalendarMonth.TabIndex = 9;

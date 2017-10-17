@@ -21,7 +21,7 @@ namespace 가계부
             this.StartPosition = FormStartPosition.Manual;
             this.Location = new Point(x, y);
 
-            labelYear.Text = main.year.ToString();
+            labelYear.Text = Global.year.ToString();
 
         }
 
@@ -32,98 +32,98 @@ namespace 가계부
 
         private void buttonNowMonth_Click(object sender, EventArgs e)
         {
-            main.year = DateTime.Now.Year;
-            main.month = DateTime.Now.Month;
+            Global.year = DateTime.Now.Year;
+            Global.month = DateTime.Now.Month;
 
             this.Close();
         }
 
         private void button1Month_Click(object sender, EventArgs e)
         {
-            main.month = 1;
+            Global.month = 1;
             this.Close();
         }
 
         private void button2Month_Click(object sender, EventArgs e)
         {
-            main.month = 2;
+            Global.month = 2;
             this.Close();
         }
 
         private void button3Month_Click(object sender, EventArgs e)
         {
-            main.month = 3;
+            Global.month = 3;
             this.Close();
         }
 
         private void button4Month_Click(object sender, EventArgs e)
         {
-            main.month = 4;
+            Global.month = 4;
             this.Close();
         }
 
         private void button5Month_Click(object sender, EventArgs e)
         {
-            main.month = 5;
+            Global.month = 5;
             this.Close();
         }
 
         private void button6Month_Click(object sender, EventArgs e)
         {
-            main.month = 6;
+            Global.month = 6;
             this.Close();
         }
 
         private void button7Month_Click(object sender, EventArgs e)
         {
-            main.month = 7;
+            Global.month = 7;
             this.Close();
         }
 
         private void button8Month_Click(object sender, EventArgs e)
         {
-            main.month = 8;
+            Global.month = 8;
             this.Close();
         }
 
         private void button9Month_Click(object sender, EventArgs e)
         {
-            main.month = 9;
+            Global.month = 9;
             this.Close();
         }
 
         private void button10Month_Click(object sender, EventArgs e)
         {
-            main.month = 10;
+            Global.month = 10;
             this.Close();
         }
 
         private void button11Month_Click(object sender, EventArgs e)
         {
-            main.month = 11;
+            Global.month = 11;
             this.Close();
         }
 
         private void button12Month_Click(object sender, EventArgs e)
         {
-            main.month = 12;
+            Global.month = 12;
             this.Close();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            int year = main.year;
+            int year = Global.year;
             year--;
             labelYear.Text = year.ToString();
-            main.year = year;
+            Global.year = year;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            int year = main.year;
+            int year = Global.year;
             year++;
             labelYear.Text = year.ToString();
-            main.year = year;
+            Global.year = year;
         }
 
         private void MainCalendarSelect_Deactivate(object sender, EventArgs e)
