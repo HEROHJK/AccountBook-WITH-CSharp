@@ -15,7 +15,7 @@ namespace 가계부.폼쓰
         public SettingForm()
         {
             InitializeComponent();
-            
+            int i = 11;
         }
     }
 }
