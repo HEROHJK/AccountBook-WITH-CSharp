@@ -21,6 +21,8 @@ namespace 가계부
         public MainForm()
         {
             InitializeComponent();
+
+            Global.pdmc.main = this;
         }
 
         private void ButtonSetting_Click(object sender, EventArgs e)
@@ -106,7 +108,7 @@ namespace 가계부
                 {
                     y += item.Height;
                 }
-                var temp = new MainListItemDay();
+                var temp = new MainListItemDay(2017,10,18,"0","50000");
                 temp.Location = new Point(temp.Location.X, temp.Location.Y + y);
                 panelList.Controls.Add(temp);
                 i++;
@@ -122,6 +124,13 @@ namespace 가계부
         private void button1_Click(object sender, EventArgs e)
         {
             ioForm = new InOutComeForm();
+
+            ioForm.ShowDialog();
+        }
+
+        public void NewIncomeForm(int year, int month, int day, int hour, int minute)
+        {
+            ioForm = new InOutComeForm(year, month, day, hour, minute);
 
             ioForm.ShowDialog();
         }

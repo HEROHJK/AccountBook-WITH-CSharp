@@ -124,7 +124,7 @@
             // 
             // dateTime
             // 
-            this.dateTime.CustomFormat = "yyyy-MM-dd HH:MM:ss";
+            this.dateTime.CustomFormat = "yyyy-MM-dd HH:mm:ss";
             this.dateTime.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.dateTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTime.Location = new System.Drawing.Point(15, 43);

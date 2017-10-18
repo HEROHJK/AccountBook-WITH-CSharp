@@ -24,6 +24,12 @@ namespace 가계부
             InitializeComponent();
         }
 
+        public InOutComeForm(int year, int month, int day, int hour, int minute)
+        {
+            InitializeComponent();
+            dateTime.Value = new DateTime(year, month, day, hour, minute, 0);
+        }
+
         private void buttonSelectBank_Click(object sender, EventArgs e)
         {
             int x = Cursor.Position.X;

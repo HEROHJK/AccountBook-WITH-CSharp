@@ -8,6 +8,8 @@ namespace 가계부
 {
     class ProgramDateManagementClass
     {
+        public MainForm main;
+
         public void AddMoney(int bankIndex, Decimal money, char separation, string insertDate, string memo, string bigCategory, string smallCategory)
         {
             Global.dbmc.AddInOut(bankIndex, money, insertDate, separation, memo, bigCategory, smallCategory);

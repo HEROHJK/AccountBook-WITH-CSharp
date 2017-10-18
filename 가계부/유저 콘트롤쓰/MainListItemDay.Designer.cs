@@ -37,6 +37,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.labelOutCome = new System.Windows.Forms.Label();
+            this.buttonAddList = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLine)).BeginInit();
             this.SuspendLayout();
             // 
@@ -49,6 +50,7 @@
             this.pictureBoxLine.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxLine.TabIndex = 0;
             this.pictureBoxLine.TabStop = false;
+            this.pictureBoxLine.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MainListItemDay_MouseUp);
             // 
             // labelDay
             // 
@@ -59,6 +61,7 @@
             this.labelDay.TabIndex = 1;
             this.labelDay.Text = "17";
             this.labelDay.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelDay.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MainListItemDay_MouseUp);
             // 
             // labelYearMonth
             // 
@@ -68,6 +71,7 @@
             this.labelYearMonth.Size = new System.Drawing.Size(49, 15);
             this.labelYearMonth.TabIndex = 2;
             this.labelYearMonth.Text = "2017.10";
+            this.labelYearMonth.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MainListItemDay_MouseUp);
             // 
             // labelDayWeek
             // 
@@ -80,55 +84,76 @@
             this.labelDayWeek.TabIndex = 3;
             this.labelDayWeek.Text = "화요일";
             this.labelDayWeek.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelDayWeek.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MainListItemDay_MouseUp);
             // 
             // labelInCome
             // 
             this.labelInCome.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.labelInCome.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.labelInCome.Location = new System.Drawing.Point(242, 3);
+            this.labelInCome.Location = new System.Drawing.Point(154, 3);
             this.labelInCome.Name = "labelInCome";
             this.labelInCome.Size = new System.Drawing.Size(123, 38);
             this.labelInCome.TabIndex = 5;
             this.labelInCome.Text = "50,000";
             this.labelInCome.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.labelInCome.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MainListItemDay_MouseUp);
             // 
             // label3
             // 
             this.label3.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.label3.Location = new System.Drawing.Point(362, 3);
+            this.label3.Location = new System.Drawing.Point(274, 3);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(23, 38);
             this.label3.TabIndex = 6;
             this.label3.Text = "원";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label3.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MainListItemDay_MouseUp);
             // 
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.label1.Location = new System.Drawing.Point(527, 4);
+            this.label1.Location = new System.Drawing.Point(439, 4);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(23, 38);
             this.label1.TabIndex = 8;
             this.label1.Text = "원";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MainListItemDay_MouseUp);
             // 
             // labelOutCome
             // 
             this.labelOutCome.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.labelOutCome.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.labelOutCome.Location = new System.Drawing.Point(407, 4);
+            this.labelOutCome.Location = new System.Drawing.Point(319, 4);
             this.labelOutCome.Name = "labelOutCome";
             this.labelOutCome.Size = new System.Drawing.Size(123, 38);
             this.labelOutCome.TabIndex = 7;
             this.labelOutCome.Text = "125,000";
             this.labelOutCome.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.labelOutCome.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MainListItemDay_MouseUp);
+            // 
+            // buttonAddList
+            // 
+            this.buttonAddList.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
+            this.buttonAddList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonAddList.Font = new System.Drawing.Font("굴림", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.buttonAddList.Location = new System.Drawing.Point(468, 5);
+            this.buttonAddList.Name = "buttonAddList";
+            this.buttonAddList.Size = new System.Drawing.Size(82, 35);
+            this.buttonAddList.TabIndex = 9;
+            this.buttonAddList.Text = "등 록";
+            this.buttonAddList.UseVisualStyleBackColor = true;
+            this.buttonAddList.Visible = false;
+            this.buttonAddList.Click += new System.EventHandler(this.buttonAddList_Click_1);
+            this.buttonAddList.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MainListItemDay_MouseUp);
             // 
             // MainListItemDay
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.buttonAddList);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.labelOutCome);
             this.Controls.Add(this.label3);
@@ -139,6 +164,8 @@
             this.Controls.Add(this.pictureBoxLine);
             this.Name = "MainListItemDay";
             this.Size = new System.Drawing.Size(600, 50);
+            this.Click += new System.EventHandler(this.MainListItemDay_Click);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.MainListItemDay_MouseUp);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLine)).EndInit();
             this.ResumeLayout(false);
 
@@ -154,5 +181,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label labelOutCome;
+        private System.Windows.Forms.Button buttonAddList;
     }
 }

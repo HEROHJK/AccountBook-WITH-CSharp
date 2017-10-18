@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="글로발쓰\Global.cs" />
+    <Compile Include="글로발쓰\Util.cs" />
     <Compile Include="데이터 관리\DataBaseManagementClass.cs" />
     <Compile Include="데이터 관리\MemoryDataManagementClass.cs" />
     <Compile Include="유저 콘트롤쓰\MainListItem.cs">
@@ -66,6 +67,8 @@
     <Compile Include="유저 콘트롤쓰\MainListItemDay.Designer.cs">
       <DependentUpon>MainListItemDay.cs</DependentUpon>
     </Compile>
+    <Compile Include="클래씨쓰\내역목록\MonthlyRowList.cs" />
+    <Compile Include="클래씨쓰\내역목록\ViewRow.cs" />
     <Compile Include="클래씨쓰\은행목록\Bank.cs" />
     <Compile Include="클래씨쓰\은행목록\BankList.cs" />
     <Compile Include="클래씨쓰\카테고리 목록\BigCategory.cs" />
