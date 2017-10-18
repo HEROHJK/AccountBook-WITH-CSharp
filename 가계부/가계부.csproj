@@ -55,6 +55,12 @@
     <Compile Include="글로발쓰\Util.cs" />
     <Compile Include="데이터 관리\DataBaseManagementClass.cs" />
     <Compile Include="데이터 관리\MemoryDataManagementClass.cs" />
+    <Compile Include="유저 콘트롤쓰\Line.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="유저 콘트롤쓰\Line.Designer.cs">
+      <DependentUpon>Line.cs</DependentUpon>
+    </Compile>
     <Compile Include="유저 콘트롤쓰\MainListItem.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -130,6 +136,9 @@
     <Compile Include="폼쓰\AccountSettingForm.Designer.cs">
       <DependentUpon>AccountSettingForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="유저 콘트롤쓰\Line.resx">
+      <DependentUpon>Line.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="유저 콘트롤쓰\MainListItem.resx">
       <DependentUpon>MainListItem.cs</DependentUpon>
     </EmbeddedResource>

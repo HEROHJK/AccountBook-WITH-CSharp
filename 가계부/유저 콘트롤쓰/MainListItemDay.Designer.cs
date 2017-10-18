@@ -164,7 +164,7 @@
             this.Controls.Add(this.pictureBoxLine);
             this.Name = "MainListItemDay";
             this.Size = new System.Drawing.Size(600, 50);
-            this.Click += new System.EventHandler(this.MainListItemDay_Click);
+            //this.Click += new System.EventHandler(this.MainListItemDay_Click_1);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.MainListItemDay_MouseUp);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLine)).EndInit();
             this.ResumeLayout(false);

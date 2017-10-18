@@ -29,5 +29,17 @@ namespace 가계부
         {
             return bankList[index];
         }
+
+        public Bank GetBankToRealIndex(int index)
+        {
+            Bank retBank = new Bank();
+
+            foreach(Bank bank in bankList)
+            {
+                if (bank.GetIndex() == index) retBank = bank;
+            }
+
+            return retBank;
+        }
     }
 }

@@ -59,6 +59,7 @@
             // labelInCome
             // 
             this.labelInCome.Font = new System.Drawing.Font("굴림", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.labelInCome.ForeColor = System.Drawing.Color.Green;
             this.labelInCome.Location = new System.Drawing.Point(0, 77);
             this.labelInCome.Name = "labelInCome";
             this.labelInCome.Size = new System.Drawing.Size(200, 23);
@@ -69,6 +70,7 @@
             // labelOutCome
             // 
             this.labelOutCome.Font = new System.Drawing.Font("굴림", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.labelOutCome.ForeColor = System.Drawing.Color.Red;
             this.labelOutCome.Location = new System.Drawing.Point(200, 77);
             this.labelOutCome.Name = "labelOutCome";
             this.labelOutCome.Size = new System.Drawing.Size(200, 23);

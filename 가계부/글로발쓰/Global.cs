@@ -15,6 +15,9 @@ namespace 가계부
         public static int hour = DateTime.Now.Hour;
         public static int minute = DateTime.Now.Minute;
 
+        //기준일
+        public static int baseDay;
+
         //DB
         public static DataBaseManagementClass dbmc = new DataBaseManagementClass();
 
@@ -31,5 +34,8 @@ namespace 가계부
 
         //카테고리 목록
         public static BigCategoryList categoryList;
+
+        //월별 내역 목록
+        public static MonthlyRowList monthlyList;
     }
 }

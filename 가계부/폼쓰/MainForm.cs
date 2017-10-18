@@ -90,34 +90,96 @@ namespace 가계부
                 return;
             }
 
-            LoadData();
-        }
-
-        private void LoadData()
-        {
-            Global.bankList = new BankList();
-            Global.bankList.LoadBankList();
-            Global.categoryList = new BigCategoryList();
-            Global.categoryList.LoadCategoryList();
-            int i = 0;
-            int y = 0; ;
-            while (i < 50)
-            {
-                y = 0;
-                foreach (Control item in panelList.Controls)
-                {
-                    y += item.Height;
-                }
-                var temp = new MainListItemDay(2017,10,18,"0","50000");
-                temp.Location = new Point(temp.Location.X, temp.Location.Y + y);
-                panelList.Controls.Add(temp);
-                i++;
-            }
             panelList.AutoScroll = false;
             panelList.HorizontalScroll.Enabled = false;
             panelList.HorizontalScroll.Visible = false;
             panelList.HorizontalScroll.Maximum = 0;
             panelList.AutoScroll = true;
+
+            LoadData();
+        }
+
+        public void LoadData()
+        {
+            //은행목록 로딩
+            Global.bankList = new BankList();
+            Global.bankList.LoadBankList();
+
+            //카테고리목록 로딩
+            Global.categoryList = new BigCategoryList();
+            Global.categoryList.LoadCategoryList();
+
+            //해당 월의 내역들 로딩
+            ReLoadRowList();
+        }
+
+        public void ReLoadRowList()
+        {
+            panelList.Controls.Clear();
+
+            Global.monthlyList = new MonthlyRowList(Global.year, Global.month);
+            int day = 31;
+            int i = 0;
+            int count = Global.monthlyList.GetCount();
+            int height = 0;
+            bool dateFirstRow = true;
+            int year, month;
+            string date;
+
+            Decimal inCome=0m, outCome=0m, total=0m;
+            Decimal dayInCome, dayOutCome;
+
+            while (i < count && day > 0)
+            {
+                height = -5;
+                foreach (Control item in panelList.Controls)
+                {
+                    height += item.Height;
+                }
+                if (day == Global.monthlyList.GetViewRow(i).GetDay())
+                {
+                    if (dateFirstRow)
+                    {
+                        var line = new Line();
+                        line.Location = new Point(line.Location.X, line.Location.Y + height);
+                        panelList.Controls.Add(line);
+                        height += 5;
+                        year = Global.monthlyList.GetYear();
+                        month = Global.monthlyList.GetMonth();
+                        date = string.Format("{0:0000}-{1:00}-{2:00}", year, month, day);
+                        dayInCome=Global.dbmc.GetDayMoney(date, true);
+                        dayOutCome=Global.dbmc.GetDayMoney(date, false);
+
+                        inCome += dayInCome;
+                        outCome += dayOutCome;
+
+                        var temp = new MainListItemDay(Global.monthlyList.GetYear(), Global.monthlyList.GetMonth(), day, Util.WriteMoneyString(dayInCome), Util.WriteMoneyString(dayOutCome));
+                        temp.Location = new Point(temp.Location.X, temp.Location.Y + height);
+                        panelList.Controls.Add(temp);
+                        height += 50;
+                        dateFirstRow = false;
+                    }
+                    var rowTemp = Global.monthlyList.GetViewRow(i);
+                    var panelItem = new MainListItem(rowTemp.GetBankIndex(), rowTemp.GetInComeIndex(), rowTemp.GetYear(), rowTemp.GetMonth(), rowTemp.GetDay(), rowTemp.GetHour(), rowTemp.GetMinute(), rowTemp.GetBigCategory(), rowTemp.GetSmallCategory(), rowTemp.GetMemo(), rowTemp.GetMoney(), rowTemp.GetSepartion());
+                    panelItem.Location = new Point(panelItem.Location.X, panelItem.Location.Y + height);
+                    panelList.Controls.Add(panelItem);
+
+                    i++;
+                }
+                else
+                {
+                    dateFirstRow = true;
+                    day--;
+                }
+
+            }
+
+            //수입/합계/지출 등록
+
+            labelInCome.Text = Util.WriteMoneyString(inCome) + " 원";
+            labelOutCome.Text = Util.WriteMoneyString(outCome) + " 원";
+            labelTotal.Text = Util.WriteMoneyString(inCome - outCome) + " 원";
+
 
         }
 

@@ -43,13 +43,11 @@ namespace 가계부
             labelOutCome.Text = outCome;
         }
 
-        private void MainListItemDay_Click(object sender, EventArgs e)
-        {
-            
-        }
-
         private void buttonAddList_Click_1(object sender, EventArgs e)
         {
+            string hourMinute = Global.monthlyList.GetLastTime(month, day);
+            lastHour = Convert.ToInt32(hourMinute.Substring(0, 2));
+            lastMinute = Convert.ToInt32(hourMinute.Substring(2, 2));
             Global.pdmc.main.ioForm = new InOutComeForm(year, month, day, lastHour, lastMinute);
             Global.pdmc.main.ioForm.ShowDialog();
         }

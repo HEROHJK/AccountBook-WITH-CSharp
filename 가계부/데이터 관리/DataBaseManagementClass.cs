@@ -104,18 +104,26 @@ namespace 가계부
 
                 int boolean = Convert.ToInt32(cmd.ExecuteScalar());
 
-                if (boolean >= 1)
+                if (boolean >= 1)//카운트가 존재할때
                 {
+                    //이름 등록
                     Global.userName = name;
+
+                    //ID 등록
                     query = string.Format("SELECT `index` FROM accountBook.`Account` a WHERE a.`name`= '{0}' AND a.password = '{1}';", name, password);
                     cmd.CommandText = query;
                     Global.userId = Convert.ToInt32(cmd.ExecuteScalar());
 
+                    //총액 등록
                     query = string.Format("SELECT `totalAmount` FROM accountBook.`Account` a WHERE a.`index` = '{0}';", Global.userId);
-
                     cmd.CommandText = query;
-
                     Global.amount = Convert.ToDecimal(cmd.ExecuteScalar());
+
+                    //기준일 등록
+                    query = string.Format("SELECT `baseDay` FROM accountBook.`Account` WHERE accountBook.`Account`.`index` = '{0}';", Global.userId);
+                    cmd.CommandText = query;
+                    Global.baseDay = Convert.ToInt32(cmd.ExecuteScalar());
+
                     return true;
                 }
                 else return false;
@@ -315,7 +323,86 @@ namespace 가계부
         #endregion
 
         #region 내역들 받아오기
+        public List<ViewRow> LoadMonthlyViewRowList(string startDate, string endDate)
+        {
+            List<ViewRow> list = new List<ViewRow>();
+            list.Clear();
 
+            using (MySqlConnection mysql = new MySqlConnection(strConn))
+            {
+                mysql.Open();
+                string query = string.Format("SELECT count(*) FROM accountBook.ListViewr WHERE `날짜`>='{0}' AND `날짜`<='{1}' AND `계정 번호`='{2}';",startDate,endDate,Global.userId);
+                MySqlCommand cmd = new MySqlCommand(query, mysql);
+
+                int count = Convert.ToInt32(cmd.ExecuteScalar());
+
+                query= string.Format("SELECT * FROM accountBook.ListViewr WHERE `날짜`>='{0}' AND `날짜`<='{1}' AND `계정 번호`='{2}' ORDER BY `날짜` desc;", startDate, endDate, Global.userId);
+                cmd.CommandText = query;
+                MySqlDataReader reader = cmd.ExecuteReader();
+                int i = 0;
+                ViewRow temp;
+                char io;
+                int year, month, day, hour,minute;
+                while (i < count)
+                {
+                    reader.Read();
+                    if (reader[3].ToString() == "입금")
+                    {
+                        io = 'I';
+                    }
+                    else
+                    {
+                        io = 'O';
+                    }
+                    year = month = day = hour = minute = 0;
+                    Util.DateStringToInt(reader[8].ToString(), ref year, ref month, ref day, ref hour, ref minute);
+                    temp = new ViewRow(Convert.ToInt32(reader[1]), io, Convert.ToDecimal(reader[4]), reader[5].ToString(), Convert.ToInt32(reader[7]), year, month, day, hour, minute, reader[9].ToString(), reader[10].ToString());
+                    list.Add(temp);
+                    i++;
+                }
+
+            }
+
+            return list;
+        }
         #endregion
+
+        #region 해당 날짜의 총수입 혹은 지출 받아오기
+        public Decimal GetDayMoney(string date, bool isIncome)
+        {
+            using (MySqlConnection mysql = new MySqlConnection(strConn))
+            {
+                mysql.Open();
+
+                string separation;
+
+                if (isIncome)
+                {
+                    separation = "입금";
+                }
+                else
+                {
+                    separation = "출금";
+                }
+
+                string query = string.Format("SELECT SUM(`금액`) FROM accountBook.ListViewr WHERE accountBook.ListViewr.`계정 번호` = '{0}' AND accountBook.ListViewr.`구분`='{1}' AND accountBook.ListViewr.`날짜`>'{2}' AND accountBook.ListViewr.`날짜`<='{3}';", Global.userId, separation, date+" 00:00:00", date+" 23:59:59");
+                MySqlCommand cmd = new MySqlCommand(query, mysql);
+                cmd.CommandText = query;
+
+                Decimal money;
+
+                try
+                {
+                    money = Convert.ToDecimal(cmd.ExecuteScalar());
+                }
+                catch
+                {
+                    money = 0.0m;
+                }
+                return money;
+            }
+        }
+        #endregion
+
     }
 }

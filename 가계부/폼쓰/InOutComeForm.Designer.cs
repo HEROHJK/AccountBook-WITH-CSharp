@@ -46,6 +46,7 @@
             this.buttonSelectBank = new System.Windows.Forms.Button();
             this.bankMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.categoryMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // radioButton1
@@ -124,12 +125,12 @@
             // 
             // dateTime
             // 
-            this.dateTime.CustomFormat = "yyyy-MM-dd HH:mm:ss";
+            this.dateTime.CustomFormat = "yyyy-MM-dd HH:mm";
             this.dateTime.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.dateTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTime.Location = new System.Drawing.Point(15, 43);
+            this.dateTime.Location = new System.Drawing.Point(88, 43);
             this.dateTime.Name = "dateTime";
-            this.dateTime.Size = new System.Drawing.Size(307, 22);
+            this.dateTime.Size = new System.Drawing.Size(234, 22);
             this.dateTime.TabIndex = 6;
             // 
             // textBoxBank
@@ -239,11 +240,22 @@
             this.categoryMenu.ShowImageMargin = false;
             this.categoryMenu.Size = new System.Drawing.Size(36, 4);
             // 
+            // label5
+            // 
+            this.label5.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label5.Location = new System.Drawing.Point(-2, 43);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(70, 20);
+            this.label5.TabIndex = 15;
+            this.label5.Text = "시 간 : ";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // InOutComeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(334, 310);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.buttonSelectBank);
             this.Controls.Add(this.buttonSelectCategory);
             this.Controls.Add(this.buttonAddCancel);
@@ -292,5 +304,6 @@
         private System.Windows.Forms.Button buttonSelectBank;
         private System.Windows.Forms.ContextMenuStrip bankMenu;
         private System.Windows.Forms.ContextMenuStrip categoryMenu;
+        private System.Windows.Forms.Label label5;
     }
 }

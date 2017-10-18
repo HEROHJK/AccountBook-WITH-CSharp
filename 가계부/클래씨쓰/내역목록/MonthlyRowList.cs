@@ -11,22 +11,47 @@ namespace 가계부
         List<ViewRow> rowList = new List<ViewRow>();
         int year;
         int month;
-        int startDay;//시작일과 종료일은 추후 기준점을 설정할때 쓰이기 위한 용도
-        int endDay;
+        string startDate;//시작일과 종료일은 추후 기준점을 설정할때 쓰이기 위한 용도
+        string endDate;
 
-        public MonthlyRowList(int year, int month, int startDay, int endDay)
+        public MonthlyRowList(int year, int month)
         {
             this.year = year;
             this.month = month;
-            this.startDay = startDay;
-            this.endDay = endDay;
 
-            this.rowList.Clear();
+            this.startDate = string.Format("{0:0000}-{1:00}-{2:00} 00:00:00",this.year,this.month,Global.baseDay);
+
+            if (month == 12)//12월이면 다음해로
+            {
+                year++;
+                month = 1;
+            }
+            else month++;
+
+            this.endDate = string.Format("{0:0000}-{1:00}-{2:00} 00:00:00",year,month,Global.baseDay);
+
+            LoadViewRows();
         }
 
         public void LoadViewRows()
         {
+            this.rowList.Clear();
+            rowList = Global.dbmc.LoadMonthlyViewRowList(startDate,endDate);
+        }
 
+        public string GetLastTime(int month,int day)
+        {
+            string time="";
+            foreach(ViewRow row in rowList)
+            {
+                if(row.GetMonth()==month && row.GetDay() == day)
+                {
+                    time = string.Format("{0:00}{1:00}",row.GetHour(), row.GetMinute());
+                    break;
+                }
+            }
+
+            return time;
         }
 
         public int GetCount()
@@ -49,14 +74,14 @@ namespace 가계부
             return month;
         }
 
-        public int GetStartDay()
+        public string GetStartDate()
         {
-            return startDay;
+            return startDate;
         }
 
-        public int GetEndDay()
+        public string GetEndDate()
         {
-            return endDay;
+            return endDate;
         }
     }
 }

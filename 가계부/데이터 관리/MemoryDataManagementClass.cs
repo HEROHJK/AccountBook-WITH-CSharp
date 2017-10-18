@@ -14,14 +14,22 @@ namespace 가계부
         {
             Global.dbmc.AddInOut(bankIndex, money, insertDate, separation, memo, bigCategory, smallCategory);
             Global.amount = Global.dbmc.GetAmount();
+
+            Global.bankList = new BankList();
             Global.bankList.LoadBankList();
+
+            this.main.ReLoadRowList();
         }
 
         public void MinusMoney(int inOutIndex)
         {
             Global.dbmc.DeleteInOut(inOutIndex);
             Global.amount = Global.dbmc.GetAmount();
+
+            Global.bankList = new BankList();
             Global.bankList.LoadBankList();
+
+            this.main.ReLoadRowList();
         }
     }
 }

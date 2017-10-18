@@ -43,12 +43,22 @@ namespace 가계부
             this.money = money;
             this.separation = separation;
 
+            //메모가 비어있으면 분류를 메모로 복사
+            if (this.memo == "")
+            {
+                this.memo = this.bigCategory;
+                if (this.smallCategory != "")
+                {
+                    this.memo += " / " + this.smallCategory;
+                }
+            }
+
             //그리고 등ㅋ넉ㅋ
             labelBigCategory.Text = this.bigCategory;
             labelSmallCategory.Text = this.smallCategory;
             labelMemo.Text = this.memo;
             labelTime.Text = string.Format("{0:00}:{1:00}", this.hour, this.minute);
-            labelBank.Text = Global.bankList.GetBank(this.bankIndex).GetName();
+            labelBank.Text = Global.bankList.GetBankToRealIndex(this.bankIndex).GetName();
             labelMoney.Text = Util.WriteMoneyString(this.money);
             //수익일떄는 초록색
             if (this.separation == 'I')
