@@ -18,7 +18,7 @@ namespace 가계부
             this.index = index;
             this.name = name;
             this.accountIndex = accountIndex;
-            childList = Global.dm.LoadChildList(index);
+            childList = Global.dbmc.LoadChildList(index);
         }
 
         public int GetIndex()

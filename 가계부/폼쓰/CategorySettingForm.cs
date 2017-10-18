@@ -26,7 +26,7 @@ namespace 가계부
         {
             if (TextBoxValidate())
             {
-                if (Global.dm.AddBigCategory(textBoxCategoryName.Text))
+                if (Global.dbmc.AddBigCategory(textBoxCategoryName.Text))
                 {
                     LoadCategory();
                 }
@@ -44,7 +44,7 @@ namespace 가계부
             if (TextBoxValidate())
             {
                 int parentIndex = Global.categoryList.GetBigCategory(comboBoxBigCategory.SelectedIndex).GetIndex();
-                if (Global.dm.AddSmallCategory(textBoxCategoryName.Text,parentIndex))
+                if (Global.dbmc.AddSmallCategory(textBoxCategoryName.Text,parentIndex))
                 {
                     LoadCategory();
                 }
@@ -62,7 +62,7 @@ namespace 가계부
             if (comboBoxBigCategory.Items.Count > 0)
             {
                 int realIndex = Global.categoryList.GetBigCategory(comboBoxBigCategory.SelectedIndex).GetIndex();
-                Global.dm.DeleteBigCategory(realIndex);
+                Global.dbmc.DeleteBigCategory(realIndex);
                 lastCategoryIndex = 0;
                 LoadCategory();
             }
@@ -76,7 +76,7 @@ namespace 가계부
             if (comboBoxBigCategory.Items.Count > 0 && Global.categoryList.GetBigCategory(comboBoxBigCategory.SelectedIndex).GetSmallCategoryCount()>0)
             {
                 int realIndex = Global.categoryList.GetBigCategory(comboBoxBigCategory.SelectedIndex).GetIndex();
-                Global.dm.DeleteSmallCategory(realIndex, dataGridViewSmallCategory.Rows[((DataGridView)sender).CurrentCellAddress.Y].Cells[((DataGridView)sender).CurrentCellAddress.X].Value.ToString());
+                Global.dbmc.DeleteSmallCategory(realIndex, dataGridViewSmallCategory.Rows[((DataGridView)sender).CurrentCellAddress.Y].Cells[((DataGridView)sender).CurrentCellAddress.X].Value.ToString());
                 lastCategoryIndex = 0;
                 LoadCategory();
             }

@@ -8,11 +8,11 @@ using System.Windows.Forms;
 
 namespace 가계부
 {
-    class DataManagement
+    class DataBaseManagementClass
     {
         string strConn = "Server=hjknas.asuscomm.com;Port=3333;Database=accountBook;Uid=accountBook;Pwd=school123;";
 
-        public DataManagement()
+        public DataBaseManagementClass()
         {
         }
         #region 은행추가
@@ -270,6 +270,46 @@ namespace 가계부
                 MySqlCommand cmd = new MySqlCommand(query, mysql);
 
                 cmd.ExecuteNonQuery();
+            }
+        }
+        #endregion
+
+        #region 내역 등록
+        public void AddInOut(int bankIndex, Decimal money, string insertDate, char separation, string memo, string bigCategory, string smallCategory)
+        {
+            using (MySqlConnection mysql = new MySqlConnection(strConn))
+            {
+                mysql.Open();
+                string query = string.Format("CALL AddMoney('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}');",Global.userId,bankIndex,money.ToString(),insertDate,separation,memo,bigCategory,smallCategory);
+                MySqlCommand cmd = new MySqlCommand(query, mysql);
+                cmd.ExecuteNonQuery();
+            }
+        }
+        #endregion
+
+        #region 내역 삭제
+        public void DeleteInOut(int inOutIndex)
+        {
+            using (MySqlConnection mysql = new MySqlConnection(strConn))
+            {
+                mysql.Open();
+                string query = string.Format("CALL MinusMoney('{0}');", inOutIndex);
+                MySqlCommand cmd = new MySqlCommand(query, mysql);
+                cmd.ExecuteNonQuery();
+            }
+        }
+        #endregion
+
+        #region 총자산 받아오기
+        public Decimal GetAmount()
+        {
+            using (MySqlConnection mysql = new MySqlConnection(strConn))
+            {
+                mysql.Open();
+                string query = string.Format("SELECT `totalAmount` FROM accountBook.`Account` WHERE accountBook.`Account`.`index` = {0}", Global.userId);
+                MySqlCommand cmd = new MySqlCommand(query, mysql);
+                cmd.CommandText = query;
+                return Convert.ToDecimal(cmd.ExecuteScalar());
             }
         }
         #endregion

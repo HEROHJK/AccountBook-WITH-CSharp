@@ -16,6 +16,7 @@ namespace 가계부
         public BankSettingForm bankSettingForm;
         public AccountSettingForm accountSettingForm;
         public CategorySettingForm categorySettingForm;
+        public InOutComeForm ioForm;
 
         public MainForm()
         {
@@ -77,7 +78,7 @@ namespace 가계부
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            DataManagement dm = new DataManagement();
+            DataBaseManagementClass dm = new DataBaseManagementClass();
             loginForm = new LoginForm();
             loginForm.ShowDialog();
 
@@ -96,6 +97,33 @@ namespace 가계부
             Global.bankList.LoadBankList();
             Global.categoryList = new BigCategoryList();
             Global.categoryList.LoadCategoryList();
+            int i = 0;
+            int y = 0; ;
+            while (i < 50)
+            {
+                y = 0;
+                foreach (Control item in panelList.Controls)
+                {
+                    y += item.Height;
+                }
+                var temp = new MainListItemDay();
+                temp.Location = new Point(temp.Location.X, temp.Location.Y + y);
+                panelList.Controls.Add(temp);
+                i++;
+            }
+            panelList.AutoScroll = false;
+            panelList.HorizontalScroll.Enabled = false;
+            panelList.HorizontalScroll.Visible = false;
+            panelList.HorizontalScroll.Maximum = 0;
+            panelList.AutoScroll = true;
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ioForm = new InOutComeForm();
+
+            ioForm.ShowDialog();
         }
     }
 }

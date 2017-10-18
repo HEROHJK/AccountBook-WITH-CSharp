@@ -17,7 +17,7 @@ namespace 가계부
 
         public void LoadBankList()
         {
-            bankList = Global.dm.LoadBankList();
+            bankList = Global.dbmc.LoadBankList();
         }
 
         public int GetCount()

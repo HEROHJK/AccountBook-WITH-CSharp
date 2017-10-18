@@ -41,8 +41,8 @@
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.panelList = new System.Windows.Forms.Panel();
-            this.mainCalendar1 = new 가계부.MainCalendar();
             this.button1 = new System.Windows.Forms.Button();
+            this.mainCalendar1 = new 가계부.MainCalendar();
             this.settingMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -153,17 +153,11 @@
             // panelList
             // 
             this.panelList.BackColor = System.Drawing.Color.White;
+            this.panelList.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelList.Location = new System.Drawing.Point(1, 103);
             this.panelList.Name = "panelList";
-            this.panelList.Size = new System.Drawing.Size(600, 503);
+            this.panelList.Size = new System.Drawing.Size(600, 500);
             this.panelList.TabIndex = 12;
-            // 
-            // mainCalendar1
-            // 
-            this.mainCalendar1.Location = new System.Drawing.Point(1, 2);
-            this.mainCalendar1.Name = "mainCalendar1";
-            this.mainCalendar1.Size = new System.Drawing.Size(240, 43);
-            this.mainCalendar1.TabIndex = 8;
             // 
             // button1
             // 
@@ -175,6 +169,14 @@
             this.button1.TabIndex = 13;
             this.button1.Text = "등 록";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // mainCalendar1
+            // 
+            this.mainCalendar1.Location = new System.Drawing.Point(1, 2);
+            this.mainCalendar1.Name = "mainCalendar1";
+            this.mainCalendar1.Size = new System.Drawing.Size(240, 43);
+            this.mainCalendar1.TabIndex = 8;
             // 
             // MainForm
             // 

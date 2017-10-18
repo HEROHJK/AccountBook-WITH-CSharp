@@ -39,7 +39,7 @@ namespace 가계부
                 MessageBox.Show("비번이 없자나 ㅡㅡ");
                 return;
             }
-            if (Global.dm.AddAccount(textBoxID.Text, textBoxPASS.Text) == 0)
+            if (Global.dbmc.AddAccount(textBoxID.Text, textBoxPASS.Text) == 0)
             {
                 MessageBox.Show("이미있는 아이디자나 ㅡㅡ");
                 return;

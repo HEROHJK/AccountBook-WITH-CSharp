@@ -12,12 +12,12 @@ namespace 가계부
 
         public BigCategoryList()
         {
-            list = Global.dm.LoadCategoryList();
+            list = Global.dbmc.LoadCategoryList();
         }
 
         public void LoadCategoryList()
         {
-            list = Global.dm.LoadCategoryList();
+            list = Global.dbmc.LoadCategoryList();
         }
 
         public BigCategory GetBigCategory(int index)

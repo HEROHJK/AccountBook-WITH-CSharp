@@ -29,7 +29,7 @@ namespace 가계부
                 MessageBox.Show("정보를 입력하셈.");
                 return;
             }
-            if (Global.dm.Login(textBoxID.Text, textBoxPASS.Text))
+            if (Global.dbmc.Login(textBoxID.Text, textBoxPASS.Text))
             {
                 if (checkBox1.Checked)
                 {

@@ -30,7 +30,7 @@ namespace 가계부
         {
             if (textBoxNewBank.Text != null && textBoxNewBank.Text != "")
             {
-                Bank bank = Global.dm.AddBank(textBoxNewBank.Text);
+                Bank bank = Global.dbmc.AddBank(textBoxNewBank.Text);
 
                 if (bank != null)
                 {
@@ -74,7 +74,7 @@ namespace 가계부
         {
             if (textBoxBankName.Text != null || textBoxBankName.Text != "")
             {
-                Global.dm.CorrectBankName(realIndex, textBoxBankName.Text);
+                Global.dbmc.CorrectBankName(realIndex, textBoxBankName.Text);
                 Global.bankList.LoadBankList();
 
                 LoadBankList();
