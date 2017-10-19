@@ -98,6 +98,12 @@
     <Compile Include="폼쓰\CategorySettingForm.Designer.cs">
       <DependentUpon>CategorySettingForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="폼쓰\DetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="폼쓰\DetailForm.Designer.cs">
+      <DependentUpon>DetailForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="폼쓰\InOutComeForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -154,6 +160,9 @@
     <EmbeddedResource Include="폼쓰\CategorySettingForm.resx">
       <DependentUpon>CategorySettingForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="폼쓰\DetailForm.resx">
+      <DependentUpon>DetailForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="폼쓰\InOutComeForm.resx">
       <DependentUpon>InOutComeForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -195,6 +204,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\말잇.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

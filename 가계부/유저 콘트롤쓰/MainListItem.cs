@@ -76,7 +76,9 @@ namespace 가계부
 
         private void ControlClick(object sender, EventArgs e)
         {
+            DetailForm detailForm = new DetailForm(inOutIndex);
 
+            detailForm.ShowDialog();
         }
     }
 }

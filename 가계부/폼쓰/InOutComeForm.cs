@@ -123,7 +123,7 @@ namespace 가계부
                 return;
             }
 
-            money = Convert.ToDecimal(textBoxMoney.Text);
+            money = Convert.ToDecimal(textBoxMoney.Text.Replace(",", ""));
             memo = textBoxMemo.Text;
             insertDate = string.Format("{0:0000}-{1:00}-{2:00} {3:00}:{4:00}:{5:00}",dateTime.Value.Year,dateTime.Value.Month,dateTime.Value.Day,dateTime.Value.Hour,dateTime.Value.Minute,dateTime.Value.Second);
 
@@ -184,6 +184,21 @@ namespace 가계부
             else if (length==1 && str[length-1]=='-') return false;//길이가1인데 맨앞이 '-' 이라면 이것도 숫자가 아니게 되므로 false반환
             else if (dotCount > 0) return false;//소수점이 이미 찍혀있으면 false반환
             else return true;//그외에는 true반환
+        }
+
+        private void textBoxMoney_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (textBoxMoney.Text != "")
+                {
+                    string lgsText;
+                    lgsText = textBoxMoney.Text.Replace(",", "");
+                    textBoxMoney.Text = String.Format("{0:#,###}", Convert.ToDecimal(lgsText));
+                    textBoxMoney.SelectionStart = textBoxMoney.Text.Length;
+                }
+            }
+            catch { }
         }
 
         private void buttonAddCancel_Click(object sender, EventArgs e)

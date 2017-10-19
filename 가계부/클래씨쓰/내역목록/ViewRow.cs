@@ -33,6 +33,11 @@ namespace 가계부
             this.smallCategory = smallCategory;
         }
 
+        public ViewRow()
+        {
+
+        }
+
         public int GetInComeIndex()
         {
             return this.inComeIndex;

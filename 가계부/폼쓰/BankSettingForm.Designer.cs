@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.buttonNameCorrect = new System.Windows.Forms.Button();
             this.buttonBankDelete = new System.Windows.Forms.Button();
@@ -164,12 +165,19 @@
             this.dataGridViewBanks.AllowUserToDeleteRows = false;
             this.dataGridViewBanks.AllowUserToResizeColumns = false;
             this.dataGridViewBanks.AllowUserToResizeRows = false;
-            this.dataGridViewBanks.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
             this.dataGridViewBanks.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.dataGridViewBanks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewBanks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridViewBanks.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.name,
             this.balance});
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewBanks.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewBanks.EnableHeadersVisualStyles = false;
             this.dataGridViewBanks.Location = new System.Drawing.Point(1, 2);
             this.dataGridViewBanks.MultiSelect = false;
@@ -191,7 +199,9 @@
             this.name.HeaderText = "은행명";
             this.name.Name = "name";
             this.name.ReadOnly = true;
-            this.name.Width = 51;
+            this.name.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.name.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.name.Width = 80;
             // 
             // balance
             // 
@@ -199,7 +209,9 @@
             this.balance.HeaderText = "잔액";
             this.balance.Name = "balance";
             this.balance.ReadOnly = true;
-            this.balance.Width = 51;
+            this.balance.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.balance.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.balance.Width = 110;
             // 
             // BankSettingForm
             // 
@@ -212,6 +224,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "BankSettingForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "통장 설정";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

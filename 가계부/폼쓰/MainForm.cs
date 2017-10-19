@@ -65,17 +65,15 @@ namespace 가계부
         //통장 설정
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            int x = Cursor.Position.X;
-            int y = Cursor.Position.Y;
-            bankSettingForm = new BankSettingForm(this, x, y);
-            bankSettingForm.Show();
+            bankSettingForm = new BankSettingForm(this);
+            bankSettingForm.ShowDialog();
         }
 
         //분류 설정
         private void toolStripMenuItem3_Click(object sender, EventArgs e)
         {
             categorySettingForm = new CategorySettingForm(this);
-            categorySettingForm.Show();
+            categorySettingForm.ShowDialog();
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -126,7 +124,7 @@ namespace 가계부
             int year, month;
             string date;
 
-            Decimal inCome=0m, outCome=0m, total=0m;
+            Decimal inCome=0m, outCome=0m;
             Decimal dayInCome, dayOutCome;
 
             while (i < count && day > 0)

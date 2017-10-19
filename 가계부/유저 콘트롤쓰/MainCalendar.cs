@@ -31,6 +31,7 @@ namespace 가계부
                 Global.month++;
             }
             buttonCalendarMonth.Text = string.Format("{0:0000}년 {1:00}월", Global.year, Global.month);
+            Global.pdmc.main.ReLoadRowList();
         }
 
         private void buttonPreviousMonth_Click_1(object sender, EventArgs e)
@@ -46,6 +47,7 @@ namespace 가계부
             }
 
             buttonCalendarMonth.Text = string.Format("{0:0000}년 {1:00}월", Global.year, Global.month);
+            Global.pdmc.main.ReLoadRowList();
         }
 
         private void buttonCalendarMonth_Click_1(object sender, EventArgs e)
@@ -59,6 +61,7 @@ namespace 가계부
         public void ChangeDate()
         {
             buttonCalendarMonth.Text = string.Format("{0:0000}년 {1:00}월", Global.year, Global.month);
+            Global.pdmc.main.ReLoadRowList();
         }
     }
 }

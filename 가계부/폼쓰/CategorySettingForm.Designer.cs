@@ -32,10 +32,10 @@
             this.buttonBigDelete = new System.Windows.Forms.Button();
             this.buttonAddBig = new System.Windows.Forms.Button();
             this.dataGridViewSmallCategory = new System.Windows.Forms.DataGridView();
-            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.buttonAddSmall = new System.Windows.Forms.Button();
             this.textBoxCategoryName = new System.Windows.Forms.TextBox();
             this.buttonSmallDelete = new System.Windows.Forms.Button();
+            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSmallCategory)).BeginInit();
             this.SuspendLayout();
             // 
@@ -79,20 +79,21 @@
             // 
             // dataGridViewSmallCategory
             // 
+            this.dataGridViewSmallCategory.AllowUserToAddRows = false;
+            this.dataGridViewSmallCategory.AllowUserToDeleteRows = false;
+            this.dataGridViewSmallCategory.AllowUserToResizeColumns = false;
+            this.dataGridViewSmallCategory.AllowUserToResizeRows = false;
+            this.dataGridViewSmallCategory.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewSmallCategory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewSmallCategory.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.name});
             this.dataGridViewSmallCategory.Location = new System.Drawing.Point(12, 42);
             this.dataGridViewSmallCategory.Name = "dataGridViewSmallCategory";
             this.dataGridViewSmallCategory.RowHeadersVisible = false;
+            this.dataGridViewSmallCategory.RowHeadersWidth = 50;
             this.dataGridViewSmallCategory.RowTemplate.Height = 23;
             this.dataGridViewSmallCategory.Size = new System.Drawing.Size(222, 236);
             this.dataGridViewSmallCategory.TabIndex = 4;
-            // 
-            // name
-            // 
-            this.name.HeaderText = "이름";
-            this.name.Name = "name";
             // 
             // buttonAddSmall
             // 
@@ -128,6 +129,13 @@
             this.buttonSmallDelete.UseVisualStyleBackColor = true;
             this.buttonSmallDelete.Click += new System.EventHandler(this.buttonSmallDelete_Click);
             // 
+            // name
+            // 
+            this.name.HeaderText = "이름";
+            this.name.Name = "name";
+            this.name.ReadOnly = true;
+            this.name.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
             // CategorySettingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -158,9 +166,9 @@
         private System.Windows.Forms.Button buttonBigDelete;
         private System.Windows.Forms.Button buttonAddBig;
         private System.Windows.Forms.DataGridView dataGridViewSmallCategory;
-        private System.Windows.Forms.DataGridViewTextBoxColumn name;
         private System.Windows.Forms.Button buttonAddSmall;
         private System.Windows.Forms.TextBox textBoxCategoryName;
         private System.Windows.Forms.Button buttonSmallDelete;
+        private System.Windows.Forms.DataGridViewTextBoxColumn name;
     }
 }

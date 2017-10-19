@@ -76,7 +76,14 @@ namespace 가계부
             if (comboBoxBigCategory.Items.Count > 0 && Global.categoryList.GetBigCategory(comboBoxBigCategory.SelectedIndex).GetSmallCategoryCount()>0)
             {
                 int realIndex = Global.categoryList.GetBigCategory(comboBoxBigCategory.SelectedIndex).GetIndex();
-                Global.dbmc.DeleteSmallCategory(realIndex, dataGridViewSmallCategory.Rows[((DataGridView)sender).CurrentCellAddress.Y].Cells[((DataGridView)sender).CurrentCellAddress.X].Value.ToString());
+                try
+                {
+                    Global.dbmc.DeleteSmallCategory(realIndex, dataGridViewSmallCategory.Rows[((DataGridView)sender).CurrentCellAddress.Y].Cells[((DataGridView)sender).CurrentCellAddress.X].Value.ToString());
+                }
+                catch
+                {
+                    Global.dbmc.DeleteSmallCategory(realIndex, dataGridViewSmallCategory.Rows[0].Cells[0].Value.ToString());
+                }
                 lastCategoryIndex = 0;
                 LoadCategory();
             }
@@ -119,6 +126,9 @@ namespace 가계부
         #region 소분류 로드
         private void LoadSmallCategory()
         {
+
+            dataGridViewSmallCategory.Rows.Clear();
+
             int index = comboBoxBigCategory.SelectedIndex;
 
             int count = Global.categoryList.GetBigCategory(index).GetSmallCategoryCount();

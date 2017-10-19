@@ -16,13 +16,11 @@ namespace 가계부
 
         int realIndex;
 
-        public BankSettingForm(MainForm main, int x, int y)
+        public BankSettingForm(MainForm main)
         {
             InitializeComponent();
 
             this.main = main;
-            this.StartPosition = FormStartPosition.Manual;
-            this.Location = new Point(x, y);
             LoadBankList();
         }
 
@@ -52,7 +50,7 @@ namespace 가계부
             int i = 0;
             while (i < count)
             {
-                string balance = Global.bankList.GetBank(i).GetBalance().ToString();
+                string balance = Util.WriteMoneyString(Global.bankList.GetBank(i).GetBalance())+" 원";
                 String[] row = {Global.bankList.GetBank(i).GetName(), balance  };
                 dataGridViewBanks.Rows.Add(row);
                 i++;
@@ -65,7 +63,7 @@ namespace 가계부
             Bank bank=Global.bankList.GetBank(index);
 
             textBoxBankName.Text = bank.GetName();
-            textBoxBalance.Text = bank.GetBalance().ToString();
+            textBoxBalance.Text = Util.WriteMoneyString(bank.GetBalance()) + " 원";
 
             realIndex = bank.GetIndex();
         }

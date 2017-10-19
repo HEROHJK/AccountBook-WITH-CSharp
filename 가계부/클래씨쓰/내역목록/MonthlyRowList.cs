@@ -64,6 +64,17 @@ namespace 가계부
             return rowList[index];
         }
 
+        public ViewRow GetViewRowToRealIndex(int index)
+        {
+            ViewRow ret = new ViewRow();
+            foreach(ViewRow row in rowList)
+            {
+                if (row.GetInComeIndex() == index) return row;
+            }
+
+            return ret;
+        }
+
         public int GetYear()
         {
             return year;
