@@ -151,7 +151,7 @@ namespace 가계부
                         inCome += dayInCome;
                         outCome += dayOutCome;
 
-                        var temp = new MainListItemDay(Global.monthlyList.GetYear(), Global.monthlyList.GetMonth(), day, Util.WriteMoneyString(dayInCome), Util.WriteMoneyString(dayOutCome));
+                        var temp = new MainListItemDay(Global.monthlyList.GetYear(i), Global.monthlyList.GetMonth(i), day, Util.WriteMoneyString(dayInCome), Util.WriteMoneyString(dayOutCome));
                         temp.Location = new Point(temp.Location.X, temp.Location.Y + height);
                         panelList.Controls.Add(temp);
                         height += 50;

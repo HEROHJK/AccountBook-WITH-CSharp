@@ -93,6 +93,34 @@ namespace 가계부
         }
         #endregion
 
+        #region 기준일 변경
+        public void ChangeBaseDay(int baseDay)
+        {
+            using (MySqlConnection mysql = new MySqlConnection(strConn))
+            {
+                mysql.Open();
+                string query = string.Format("UPDATE accountBook.`Account` SET accountBook.`Account`.`baseDay` = '{0}' WHERE accountBook.`Account`.`index` = '{1}';", baseDay, Global.userId);
+                MySqlCommand cmd = new MySqlCommand(query, mysql);
+
+                cmd.ExecuteNonQuery();
+            }
+        }
+        #endregion
+
+        #region 은행 삭제
+        public void DeleteBank(int bankIndex)
+        {
+            using (MySqlConnection mysql = new MySqlConnection(strConn))
+            {
+                mysql.Open();
+                string query = string.Format("CALL DeleteBank('{0}');", bankIndex);
+                MySqlCommand cmd = new MySqlCommand(query, mysql);
+
+                cmd.ExecuteNonQuery();
+            }
+        }
+        #endregion
+
         #region 로그인
         public bool Login(string name, string password)
         {

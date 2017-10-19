@@ -162,5 +162,10 @@ namespace 가계부
 
             return true;
         }
+
+        private void CategorySettingForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape) this.Close();
+        }
     }
 }

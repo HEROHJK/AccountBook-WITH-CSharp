@@ -47,6 +47,8 @@ namespace 가계부
                 button1.Text = "지 출";
                 button1.BackColor = Color.FromArgb(255, 192, 192); 
             }
+
+            this.Text = row.GetMemo();
         }
 
         private void buttonAddCancel_Click(object sender, EventArgs e)
@@ -238,6 +240,11 @@ namespace 가계부
             {
                 e.Handled = true;
             }
+        }
+
+        private void DetailForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape) this.Close();
         }
 
         private void SmallCategoryClick(object sender, EventArgs e)

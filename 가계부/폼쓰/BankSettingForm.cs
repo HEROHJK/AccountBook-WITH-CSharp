@@ -14,7 +14,9 @@ namespace 가계부
     {
         MainForm main;
 
-        int realIndex;
+        int realIndex=-1;
+
+        bool msgboxOpen = false;
 
         public BankSettingForm(MainForm main)
         {
@@ -34,6 +36,7 @@ namespace 가계부
                 {
                     Global.bankList.LoadBankList();
                     LoadBankList();
+                    textBoxNewBank.Text = "";
                 }
             }
             else
@@ -80,6 +83,47 @@ namespace 가계부
                 MessageBox.Show("바뀜");
             }
             
+        }
+
+        private void buttonBankDelete_Click(object sender, EventArgs e)
+        {
+            msgboxOpen = true;
+            if(realIndex==-1)
+            {
+                MessageBox.Show("지우려는 통장이 없는디요?", "헐 ㅋ");
+                msgboxOpen = false;
+                this.Size = new Size(448, 345);
+                return;
+            }
+            if(MessageBox.Show("통장을 지우면여\n거래내역도 지워저여\nㄱㅊ??", "실화냐", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                Global.pdmc.DeleteBank(realIndex);
+                LoadBankList();
+                msgboxOpen = false;
+                this.Size = new Size(448, 345);
+            }
+
+        }
+
+        private void buttonBankDelete_MouseLeave(object sender, EventArgs e)
+        {
+            if (!msgboxOpen)
+            {
+                this.Size = new Size(448, 345);
+            }
+        }
+
+        private void buttonBankDelete_MouseHover(object sender, EventArgs e)
+        {
+            this.Size = new Size(748, 345);
+        }
+
+        private void BankSettingForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Escape)
+            {
+                this.Close();
+            }
         }
     }
 }

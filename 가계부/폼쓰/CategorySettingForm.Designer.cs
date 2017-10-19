@@ -32,10 +32,10 @@
             this.buttonBigDelete = new System.Windows.Forms.Button();
             this.buttonAddBig = new System.Windows.Forms.Button();
             this.dataGridViewSmallCategory = new System.Windows.Forms.DataGridView();
+            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.buttonAddSmall = new System.Windows.Forms.Button();
             this.textBoxCategoryName = new System.Windows.Forms.TextBox();
             this.buttonSmallDelete = new System.Windows.Forms.Button();
-            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSmallCategory)).BeginInit();
             this.SuspendLayout();
             // 
@@ -95,6 +95,13 @@
             this.dataGridViewSmallCategory.Size = new System.Drawing.Size(222, 236);
             this.dataGridViewSmallCategory.TabIndex = 4;
             // 
+            // name
+            // 
+            this.name.HeaderText = "이름";
+            this.name.Name = "name";
+            this.name.ReadOnly = true;
+            this.name.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
             // buttonAddSmall
             // 
             this.buttonAddSmall.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
@@ -129,13 +136,6 @@
             this.buttonSmallDelete.UseVisualStyleBackColor = true;
             this.buttonSmallDelete.Click += new System.EventHandler(this.buttonSmallDelete_Click);
             // 
-            // name
-            // 
-            this.name.HeaderText = "이름";
-            this.name.Name = "name";
-            this.name.ReadOnly = true;
-            this.name.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
             // CategorySettingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -149,11 +149,13 @@
             this.Controls.Add(this.buttonBigDelete);
             this.Controls.Add(this.comboBoxBigCategory);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "CategorySettingForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "분류 등넉^^";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CategorySettingForm_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSmallCategory)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

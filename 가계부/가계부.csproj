@@ -54,7 +54,7 @@
     <Compile Include="글로발쓰\Global.cs" />
     <Compile Include="글로발쓰\Util.cs" />
     <Compile Include="데이터 관리\DataBaseManagementClass.cs" />
-    <Compile Include="데이터 관리\MemoryDataManagementClass.cs" />
+    <Compile Include="데이터 관리\ProgramDataManagementClass.cs" />
     <Compile Include="유저 콘트롤쓰\Line.cs">
       <SubType>UserControl</SubType>
     </Compile>

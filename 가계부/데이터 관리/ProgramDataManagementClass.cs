@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace 가계부
 {
-    class ProgramDateManagementClass
+    class ProgramDataManagementClass
     {
         public MainForm main;
 
@@ -30,6 +30,22 @@ namespace 가계부
             Global.bankList.LoadBankList();
 
             this.main.ReLoadRowList();
+        }
+
+        public void ChangeBaseDay(int baseDay)
+        {
+            Global.dbmc.ChangeBaseDay(baseDay);
+
+            Global.baseDay = baseDay;
+
+            main.ReLoadRowList();
+        }
+
+        public void DeleteBank(int bankIndex)
+        {
+            Global.dbmc.DeleteBank(bankIndex);
+
+            main.LoadData();
         }
     }
 }

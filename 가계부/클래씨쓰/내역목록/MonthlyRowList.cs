@@ -85,6 +85,16 @@ namespace 가계부
             return month;
         }
 
+        public int GetYear(int index)
+        {
+            return rowList[index].GetYear();
+        }
+
+        public int GetMonth(int index)
+        {
+            return rowList[index].GetMonth();
+        }
+
         public string GetStartDate()
         {
             return startDate;

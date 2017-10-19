@@ -35,18 +35,22 @@
             this.label1 = new System.Windows.Forms.Label();
             this.buttonClose = new System.Windows.Forms.Button();
             this.buttonLogOut = new System.Windows.Forms.Button();
+            this.comboBoxBaseDay = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.comboBoxBaseDay);
             this.groupBox1.Controls.Add(this.textBoxAmount);
             this.groupBox1.Controls.Add(this.textBoxName);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(176, 78);
+            this.groupBox1.Size = new System.Drawing.Size(176, 110);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "정보";
@@ -54,20 +58,20 @@
             // textBoxAmount
             // 
             this.textBoxAmount.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.textBoxAmount.Location = new System.Drawing.Point(53, 43);
+            this.textBoxAmount.Location = new System.Drawing.Point(65, 43);
             this.textBoxAmount.Name = "textBoxAmount";
             this.textBoxAmount.ReadOnly = true;
-            this.textBoxAmount.Size = new System.Drawing.Size(117, 21);
+            this.textBoxAmount.Size = new System.Drawing.Size(105, 21);
             this.textBoxAmount.TabIndex = 3;
             this.textBoxAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBoxName
             // 
             this.textBoxName.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.textBoxName.Location = new System.Drawing.Point(53, 14);
+            this.textBoxName.Location = new System.Drawing.Point(65, 14);
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.ReadOnly = true;
-            this.textBoxName.Size = new System.Drawing.Size(117, 21);
+            this.textBoxName.Size = new System.Drawing.Size(105, 21);
             this.textBoxName.TabIndex = 2;
             this.textBoxName.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -94,7 +98,7 @@
             this.buttonClose.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
             this.buttonClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonClose.Font = new System.Drawing.Font("굴림", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.buttonClose.Location = new System.Drawing.Point(0, 96);
+            this.buttonClose.Location = new System.Drawing.Point(0, 141);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(102, 80);
             this.buttonClose.TabIndex = 1;
@@ -107,7 +111,7 @@
             this.buttonLogOut.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
             this.buttonLogOut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonLogOut.Font = new System.Drawing.Font("굴림", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.buttonLogOut.Location = new System.Drawing.Point(102, 96);
+            this.buttonLogOut.Location = new System.Drawing.Point(102, 141);
             this.buttonLogOut.Name = "buttonLogOut";
             this.buttonLogOut.Size = new System.Drawing.Size(102, 80);
             this.buttonLogOut.TabIndex = 2;
@@ -115,11 +119,62 @@
             this.buttonLogOut.UseVisualStyleBackColor = true;
             this.buttonLogOut.Click += new System.EventHandler(this.buttonLogOut_Click);
             // 
+            // comboBoxBaseDay
+            // 
+            this.comboBoxBaseDay.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxBaseDay.FormattingEnabled = true;
+            this.comboBoxBaseDay.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24",
+            "25",
+            "26",
+            "27",
+            "28",
+            "29",
+            "30",
+            "31"});
+            this.comboBoxBaseDay.Location = new System.Drawing.Point(65, 70);
+            this.comboBoxBaseDay.Name = "comboBoxBaseDay";
+            this.comboBoxBaseDay.Size = new System.Drawing.Size(105, 20);
+            this.comboBoxBaseDay.TabIndex = 4;
+            this.comboBoxBaseDay.SelectedIndexChanged += new System.EventHandler(this.comboBoxBaseDay_SelectedIndexChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 73);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(53, 12);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "기준일 : ";
+            // 
             // AccountSettingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(204, 176);
+            this.ClientSize = new System.Drawing.Size(204, 226);
             this.Controls.Add(this.buttonLogOut);
             this.Controls.Add(this.buttonClose);
             this.Controls.Add(this.groupBox1);
@@ -144,5 +199,7 @@
         private System.Windows.Forms.Button buttonLogOut;
         private System.Windows.Forms.TextBox textBoxAmount;
         private System.Windows.Forms.TextBox textBoxName;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox comboBoxBaseDay;
     }
 }

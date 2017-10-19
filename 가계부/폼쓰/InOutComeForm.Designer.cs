@@ -273,6 +273,7 @@
             this.Controls.Add(this.radioButton2);
             this.Controls.Add(this.radioButton1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "InOutComeForm";
@@ -281,6 +282,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "등록";
             this.Load += new System.EventHandler(this.InOutComeForm_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.InOutComeForm_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -30,6 +30,18 @@ namespace 가계부
             return bankList[index];
         }
 
+        public Bank GetBank(string name)
+        {
+            Bank retBank = new Bank();
+
+            foreach(Bank bank in bankList)
+            {
+                if (bank.GetName() == name) return bank;
+            }
+
+            return retBank;
+        }
+
         public Bank GetBankToRealIndex(int index)
         {
             Bank retBank = new Bank();

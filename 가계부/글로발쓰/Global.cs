@@ -22,7 +22,7 @@ namespace 가계부
         public static DataBaseManagementClass dbmc = new DataBaseManagementClass();
 
         //프로그램 클래스들
-        public static ProgramDateManagementClass pdmc = new ProgramDateManagementClass();
+        public static ProgramDataManagementClass pdmc = new ProgramDataManagementClass();
 
         //계정정보
         public static string userName;
