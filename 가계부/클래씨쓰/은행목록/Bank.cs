@@ -11,6 +11,7 @@ namespace 가계부
         string name;
         int index;
         decimal balance;
+        int number;
 
         public Bank()
         {
